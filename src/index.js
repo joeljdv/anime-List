@@ -16,6 +16,5 @@ function fetchAnime() {
             ${data.top[key].title}`
         left.appendChild(divTags)
     }
-    })
-    
+    })   
 }
