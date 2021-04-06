@@ -48,8 +48,15 @@ function fecthByGenres(e){
         var genreCode=1
         justFetch(genreCode)
     }else if(dropdown === "Adventure") {
+        var genreCode = 2
         container.innerHTML=""
-        genreCode = 2
+        justFetch(genreCode)
+    }else if(dropdown === "Top Anime") {
+        container.innerHTML=""
+        fetchAnime()
+    }else if(dropdown === "comedy") {
+        genreCode=4
+        container.innerHTML=""
         justFetch(genreCode)
     }
 
