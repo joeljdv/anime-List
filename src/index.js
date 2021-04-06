@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded",()=> {
     fetchAnime()
 })
 
+const baseURL = "https://api.jikan.moe/v3"
+
+
 function fetchAnime() {
     fetch("https://api.jikan.moe/v3/top/anime/1")
     .then(res => res.json())
@@ -27,5 +30,11 @@ function attachClick() {
 }
 
 function displayInfo(e) {
-    console.log(e.target.id)
+    fetch(baseURL+`/anime/${e.target.id}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        const right = document.querySelector(".right")
+        const divTags = document.createElement("div")
+    })
 }
