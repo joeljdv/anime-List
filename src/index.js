@@ -45,6 +45,17 @@ function displayInfo(e) {
     })
 }
 
-function fecthByGenres(e){
-    console.log(e)
+function fecthByGenres(e){ 
+    const dropdown = e.target.value
+     console.log(dropdown)
+     const left = document.querySelector(".left")
+    if(dropdown === "Action") {
+        let genreCode=1
+        fetch(baseURL+`/genre/anime/${genreCode}`)
+        .then(res => res.json())
+        .then(anime => {
+            console.log(anime)
+        })
+    }
+
 }
