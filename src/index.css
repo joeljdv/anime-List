@@ -1,17 +1,20 @@
-#container {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
   .left {
     left: 0;
+    width: 30%
   }
 
   .right {
     right: 0;
+    width:65%;
+    text-align: center;
   }
