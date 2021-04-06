@@ -32,9 +32,17 @@ function attachClick() {
 function displayInfo(e) {
     fetch(baseURL+`/anime/${e.target.id}`)
     .then(res => res.json())
-    .then(data => {
-        console.log(data)
+    .then(anime => {
+        console.log(anime)
         const right = document.querySelector(".right")
         const divTags = document.createElement("div")
+        divTags.innerHTML=""
+        divTags.innerHTML = `
+        <h2>${anime.title}</h2>
+        <img src=${anime.image_url} alt=${anime.title}>
+        <p><strong>Synopsis:</strong>${anime.synopsis}</p>`
+        right.appendChild(divTags)
+        
     })
 }
+
