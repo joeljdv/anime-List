@@ -11,10 +11,21 @@ function fetchAnime() {
       for (const key in data.top){
         console.log(data.top[key].title)
         const divTags = document.createElement("div")
-        divTags.setAttribute("class",`top-anime`)
+        divTags.setAttribute("id",`${data.top[key].mal_id}`)
+        divTags.classList.add('top-anime')
         divTags.innerHTML += `
             ${data.top[key].title}`
-        left.appendChild(divTags)
-    }
-    })   
+        left.appendChild(divTags)     
+        attachClick()
+        }     
+    })  
+}
+
+function attachClick() {
+    const animes = document.querySelectorAll(".top-anime")
+    animes.forEach(element => element.addEventListener("click",displayInfo))
+}
+
+function displayInfo(e) {
+    console.log(e.target.id)
 }
