@@ -1,11 +1,10 @@
 h1 {
-  margin: 10px;
+  margin:10px
 }
 .split {
   height: 90%;
   width: 50%;
   position: fixed;
-  z-index: 1;
   top: 5%;
   overflow-x: hidden;
   padding-top: 20px;
@@ -17,7 +16,8 @@ h1 {
   }
 
   .right {
-    right: 0;
+    right:2.5%;
     width:65%;
     text-align: center;
   }
+

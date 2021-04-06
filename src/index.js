@@ -30,6 +30,7 @@ function displayInfo(e) {
     fetch(baseURL+`/anime/${e.target.id}`)
     .then(res => res.json())
     .then(anime => {
+        console.log(anime)
         divTags.innerHTML = `
         <h2>${anime.title}</h2>
         <img src=${anime.image_url} alt=${anime.title}>
@@ -56,6 +57,14 @@ function fecthByGenres(e){
         fetchAnime()
     }else if(dropdown === "comedy") {
         genreCode=4
+        container.innerHTML=""
+        justFetch(genreCode)
+    }else if(dropdown === "Slice") {
+        genreCode=36
+        container.innerHTML=""
+        justFetch(genreCode)
+    }else if(dropdown === "magic") {
+        genreCode=16
         container.innerHTML=""
         justFetch(genreCode)
     }
