@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=> {
     fetchAnime()
+    document.querySelector("#genres").addEventListener("click",fecthByGenres)
 })
 
 const baseURL = "https://api.jikan.moe/v3"
@@ -9,16 +10,15 @@ function fetchAnime() {
     fetch("https://api.jikan.moe/v3/top/anime/1")
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      const left = document.querySelector(".left")
+        console.log(data)
       for (const key in data.top){
-        console.log(data.top[key].title)
+        const left = document.querySelector(".left")
         const divTags = document.createElement("div")
         divTags.setAttribute("id",`${data.top[key].mal_id}`)
         divTags.classList.add('top-anime')
         divTags.innerHTML += `
             ${data.top[key].title}`
-        left.appendChild(divTags)     
+        left.appendChild(divTags) 
         attachClick()
         }     
     })  
@@ -30,19 +30,21 @@ function attachClick() {
 }
 
 function displayInfo(e) {
+    const divTags = document.createElement("div")
+    const right = document.querySelector(".right")
+    right.innerHTML=""  
     fetch(baseURL+`/anime/${e.target.id}`)
     .then(res => res.json())
     .then(anime => {
-        console.log(anime)
-        const right = document.querySelector(".right")
-        const divTags = document.createElement("div")
-        divTags.innerHTML=""
         divTags.innerHTML = `
         <h2>${anime.title}</h2>
         <img src=${anime.image_url} alt=${anime.title}>
-        <p><strong>Synopsis:</strong>${anime.synopsis}</p>`
-        right.appendChild(divTags)
-        
+        <p><strong>Synopsis: </strong>${anime.synopsis}</p>
+        <p><strong>Status: </strong>${anime.status}</p>`
+        right.appendChild(divTags) 
     })
 }
 
+function fecthByGenres(e){
+    console.log(e)
+}
