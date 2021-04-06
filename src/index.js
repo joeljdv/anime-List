@@ -45,16 +45,12 @@ function fecthByGenres(e){
      const container = document.querySelector("#container") 
     if(dropdown === "Action") {
          container.innerHTML=""
-        let genreCode=1
-        fetch(baseURL+`/genre/anime/${genreCode}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            for(const element in data.anime){ 
-                addInfo(data.anime[element])
-                attachClick()
-            }
-        })
+        var genreCode=1
+        justFetch(genreCode)
+    }else if(dropdown === "Adventure") {
+        container.innerHTML=""
+        genreCode = 2
+        justFetch(genreCode)
     }
 
 }
@@ -67,4 +63,16 @@ function addInfo(data) {
         divTags.innerHTML += `
             ${data.title}`
         container.appendChild(divTags)
+}
+
+function justFetch(genreCode) {
+    fetch(baseURL+`/genre/anime/${genreCode}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            for(const element in data.anime){ 
+                addInfo(data.anime[element])
+                attachClick()
+            }
+        })
 }
