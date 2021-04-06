@@ -12,20 +12,14 @@ function fetchAnime() {
     .then(data => {
         console.log(data)
       for (const key in data.top){
-        const left = document.querySelector(".left")
-        const divTags = document.createElement("div")
-        divTags.setAttribute("id",`${data.top[key].mal_id}`)
-        divTags.classList.add('top-anime')
-        divTags.innerHTML += `
-            ${data.top[key].title}`
-        left.appendChild(divTags) 
+       addInfo(data.top[key])
         attachClick()
         }     
     })  
 }
 
 function attachClick() {
-    const animes = document.querySelectorAll(".top-anime")
+    const animes = document.querySelectorAll(".anime")
     animes.forEach(element => element.addEventListener("click",displayInfo))
 }
 
@@ -48,14 +42,29 @@ function displayInfo(e) {
 function fecthByGenres(e){ 
     const dropdown = e.target.value
      console.log(dropdown)
-     const left = document.querySelector(".left")
+     const container = document.querySelector("#container") 
     if(dropdown === "Action") {
+         container.innerHTML=""
         let genreCode=1
         fetch(baseURL+`/genre/anime/${genreCode}`)
         .then(res => res.json())
-        .then(anime => {
-            console.log(anime)
+        .then(data => {
+            console.log(data)
+            for(const element in data.anime){ 
+                addInfo(data.anime[element])
+                attachClick()
+            }
         })
     }
 
+}
+
+function addInfo(data) {
+    const container = document.querySelector("#container")
+        const divTags = document.createElement("div")
+        divTags.setAttribute("id",`${data.mal_id}`)
+        divTags.classList.add('anime')
+        divTags.innerHTML += `
+            ${data.title}`
+        container.appendChild(divTags)
 }
