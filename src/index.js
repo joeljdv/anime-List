@@ -88,6 +88,10 @@ function fecthByGenres(e){
         genreCode=8
         container.innerHTML=""
         justFetch(genreCode)
+    }else if(dropdown === "Fantasy") {
+        genreCode=10
+        container.innerHTML=""
+        justFetch(genreCode)
     }
 
 }
