@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=> {
     fetchAnime()
-    document.querySelector("#genres").addEventListener("click",fecthByGenres)
+   document.querySelector("#genres").addEventListener("click",fecthByGenres)
 })
 
 const baseURL = "https://api.jikan.moe/v3"
@@ -10,12 +10,21 @@ function fetchAnime() {
     fetch("https://api.jikan.moe/v3/top/anime/1")
     .then(res => res.json())
     .then(data => {
-        console.log(data)
       for (const key in data.top){
        addInfo(data.top[key])
         attachClick()
         }     
     })  
+}
+
+function addInfo(data) {
+    const container = document.querySelector("#container")
+        const divTags = document.createElement("div")
+        divTags.setAttribute("id",`${data.mal_id}`)
+        divTags.classList.add('anime')
+        divTags.innerHTML += `
+            ${data.title}`
+        container.appendChild(divTags)
 }
 
 function attachClick() {
@@ -30,12 +39,20 @@ function displayInfo(e) {
     fetch(baseURL+`/anime/${e.target.id}`)
     .then(res => res.json())
     .then(anime => {
-        console.log(anime)
+        let genres = anime.genres
+        let genresNames =[]
+        genres.filter(obj => {
+            genresNames.push(obj.name)
+            return genresNames
+        })
         divTags.innerHTML = `
-        <h2>${anime.title}</h2>
+        <h2 class=titles>${anime.title}</h2>
         <img src=${anime.image_url} alt=${anime.title}>
-        <p><strong>Synopsis: </strong>${anime.synopsis}</p>
-        <p><strong>Status: </strong>${anime.status}</p>`
+        <p><span class=bold><strong>Synopsis: </strong></span>${anime.synopsis}</p>
+        <p><strong><span class=bold>Genres: <span></strong>${genresNames.join(", ")}</p>
+        <p><strong><span class=bold>Aired: <span></strong>${anime.aired.string}</p>
+        <p><strong><span class=bold>Status: <span></strong>${anime.status}</p>
+        <p><strong><span class=bold>Episodes: </span></strong>${anime.episodes}</p>`
         right.appendChild(divTags) 
     })
 }
@@ -67,18 +84,12 @@ function fecthByGenres(e){
         genreCode=16
         container.innerHTML=""
         justFetch(genreCode)
+    }else if(dropdown === "Drama") {
+        genreCode=8
+        container.innerHTML=""
+        justFetch(genreCode)
     }
 
-}
-
-function addInfo(data) {
-    const container = document.querySelector("#container")
-        const divTags = document.createElement("div")
-        divTags.setAttribute("id",`${data.mal_id}`)
-        divTags.classList.add('anime')
-        divTags.innerHTML += `
-            ${data.title}`
-        container.appendChild(divTags)
 }
 
 function justFetch(genreCode) {

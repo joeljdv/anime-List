@@ -1,6 +1,14 @@
-h1 {
-  margin:10px
+#header {
+  height:auto;
 }
+
+
+#header h1 {
+  margin: 0%;
+  color:#DCDCDC;
+  text-align: center;  
+}
+
 .split {
   height: 90%;
   width: 50%;
@@ -10,14 +18,69 @@ h1 {
   padding-top: 20px;
 }
 
-  .left {
+.left {
     left: 0;
-    width: 30%
+    width: 30%;
+    color:#DCDCDC;
+    text-decoration: underline;
+    
   }
 
-  .right {
+.right {
     right:2.5%;
     width:65%;
-    text-align: center;
+    color:#DCDCDC;  
   }
 
+.right p {
+  text-align: left;
+}
+
+.right .titles {
+  text-align: center;
+}
+
+.right img {
+  width: 250px;
+  border-style: groove;
+  border-width: 12px;
+  border-color:#DCDCDC;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#genres {
+  color: black;
+  border-color: #DCDCDC;
+}
+
+body {
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #A9A9A9; 
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background: #DCDCDC; 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:  #DCDCDC; 
+}
+
+.bold {
+  color: blue;
+}
+.titles {
+  color: blue;
+}
