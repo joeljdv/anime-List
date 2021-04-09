@@ -97,6 +97,10 @@ function fecthByGenres(e){
         genreCode=7
         container.innerHTML=""
         justFetch(genreCode)
+    }else if(dropdown === "Romance") {
+        genreCode=22
+        container.innerHTML=""
+        justFetch(genreCode)
     }
 
 }
