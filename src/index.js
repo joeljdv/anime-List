@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=> {
     fetchAnime()
+    
    document.querySelector("#genres").addEventListener("click",fecthByGenres)
 })
 
@@ -90,6 +91,10 @@ function fecthByGenres(e){
         justFetch(genreCode)
     }else if(dropdown === "Fantasy") {
         genreCode=10
+        container.innerHTML=""
+        justFetch(genreCode)
+    }else if(dropdown === "Mystery") {
+        genreCode=7
         container.innerHTML=""
         justFetch(genreCode)
     }
