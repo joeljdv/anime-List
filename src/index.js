@@ -60,7 +60,9 @@ function displayInfo(e) {
 
 function fecthByGenres(e){ 
     const dropdown = e.target.value
-     const container = document.querySelector("#container") 
+    const container = document.querySelector("#container")
+    const right = document.querySelector(".right")
+    right.innerHTML=""  
     if(dropdown === "Action") {
          container.innerHTML=""
         var genreCode=1
