@@ -60,7 +60,6 @@ function displayInfo(e) {
 
 function fecthByGenres(e){ 
     const dropdown = e.target.value
-     console.log(dropdown)
      const container = document.querySelector("#container") 
     if(dropdown === "Action") {
          container.innerHTML=""
